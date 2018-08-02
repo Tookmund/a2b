@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 	if (argc == 3)
 	{
 		close(1);
-		int out = open(argv[2], O_WRONLY);
+		int out = open(argv[2], O_WRONLY | O_CREAT, 0664);
 		if (out != 1)
 		{
 			fprintf(stderr, "Failed opening output '%s' [%d]\n", argv[2], out);
