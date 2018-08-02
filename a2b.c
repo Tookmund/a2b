@@ -8,6 +8,12 @@
 // https://stackoverflow.com/a/50233979
 void printbinchar(unsigned char c)
 {
+	if (c == '\n') return;
+	else if (c == ' ' || c == '\t')
+	{
+		puts("\n");
+		return;
+	}
 	for( int i = 7; i >= 0; i-- )
 	{
 		printf( "%d", ( c >> i ) & 1 ? 1 : 0 );
