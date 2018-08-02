@@ -4,6 +4,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <string.h>
 
 // https://stackoverflow.com/a/50233979
 void printbinchar(unsigned char c)
@@ -25,12 +26,15 @@ int main(int argc, char **argv)
 {
 	if (argc >= 2)
 	{
-		close(0);
-		int in = open(argv[1], O_RDONLY);
-		if (in != 0)
+		if (strcmp(argv[1], "-"))
 		{
-			fprintf(stderr, "Failed opening input '%s' [%d]\n", argv[1], in);
-			exit(1);
+			close(0);
+			int in = open(argv[1], O_RDONLY);
+			if (in != 0)
+			{
+				fprintf(stderr, "Failed opening input '%s' [%d]\n", argv[1], in);
+				exit(1);
+			}
 		}
 	}
 	if (argc == 3)
