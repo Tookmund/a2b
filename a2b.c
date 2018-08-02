@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+// https://stackoverflow.com/a/50233979
 void printbinchar(unsigned char c)
 {
 	for( int i = 7; i >= 0; i-- )
